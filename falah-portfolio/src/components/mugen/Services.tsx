@@ -3,71 +3,186 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
-export default function Services() {
-  const [activeIdx, setActiveIdx] = useState(0);
+const services = [
+  {
+    title: "Landing Page Design & Development",
+    description: "High-converting landing pages designed to stand out and load fast. Delivered in 5–7 days.",
+    tags: ["UI/UX", "Conversion", "Fast Delivery"],
+    color: "rgba(255, 255, 255, 0.05)"
+  },
+  {
+    title: "Business Website",
+    description: "Modern, responsive websites for small businesses. Built for clarity, speed, and real-world use.",
+    tags: ["Responsive", "SEO", "Performance"],
+    color: "rgba(200, 200, 200, 0.05)"
+  },
+  {
+    title: "Website Redesign",
+    description: "Upgrade outdated websites into clean, premium experiences with better UI and performance.",
+    tags: ["UI Revamp", "Optimization", "Modernization"],
+    color: "rgba(150, 150, 150, 0.05)"
+  }
+];
 
-  const services = [
-    { title: "Brand Identity", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" },
-    { title: "Digital Design", image: "https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=2070&auto=format&fit=crop" },
-    { title: "Product Design", image: "https://images.unsplash.com/photo-1620712948343-0084236a22c1?q=80&w=2070&auto=format&fit=crop" },
-    { title: "Marketing & Growth", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" },
-    { title: "Development", image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2076&auto=format&fit=crop" },
-  ];
+export default function Services() {
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
-    <section className="w-full bg-transparent py-32 md:py-48 px-6 relative border-b border-zinc-900 flex justify-center">
-      
-      <div className="w-full relative z-10 flex flex-col pt-12">
-        
-        {/* Top: [03] Services Label */}
-        <div className="absolute top-0 left-0 hidden lg:block">
-          <span className="text-[11px] font-bold text-white tracking-widest">[03] Services</span>
-        </div>
+    <section className="w-full bg-black relative overflow-hidden py-32 px-6 sm:px-12 min-h-[800px] flex flex-col justify-center">
 
-        {/* Center Top: Title and Description */}
-        <div className="flex flex-col items-center justify-center text-center mb-32 max-w-2xl mx-auto">
-          <h2 className="text-[14vw] md:text-[8vw] lg:text-[10vw] font-black text-white tracking-tighter leading-none mb-8">
-            Services
+      {/* SVG Filter for Liquid Effect */}
+      <svg className="hidden">
+        <filter id="liquid-services">
+          <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="3" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="50" />
+        </filter>
+      </svg>
+
+      {/* Ethereal/Liquid Smoke Effect */}
+      <div className="absolute inset-0 z-0 opacity-30" style={{ filter: 'url(#liquid-services)' }}>
+        <motion.div
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.1, 0.2, 0.1],
+            x: [-50, 50, -50],
+            y: [-30, 30, -30],
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/4 w-[800px] h-[800px] bg-white blur-[180px] rounded-full"
+        />
+        <motion.div
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.15, 0.05, 0.15],
+            x: [50, -50, 50],
+            y: [30, -30, 30],
+          }}
+          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-1/2 right-1/4 w-[700px] h-[700px] bg-zinc-400 blur-[150px] rounded-full"
+        />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mb-20 text-center"
+        >
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-500 mb-6 block">Capabilities</span>
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.9]">
+            My Services
           </h2>
-          <p className="text-lg md:text-xl text-zinc-300 font-medium leading-[1.6] tracking-tight text-center px-4">
-            Full-spectrum development capabilities under one roof. Whether you need a complete backend overhaul or ongoing UI support, I have the expertise to deliver. No outsourcing, no excuses, just exceptional work from a dedicated engineer.
-          </p>
-        </div>
+        </motion.div>
 
-        {/* Bottom Split: List and Image */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-8 items-center w-full max-w-7xl mx-auto">
-          
-          {/* Left: Hover List */}
-          <div className="lg:col-span-4 flex flex-col gap-6 md:gap-8">
-            {services.map((srv, idx) => (
-              <div 
-                key={idx} 
-                onMouseEnter={() => setActiveIdx(idx)}
-                className={`text-4xl md:text-5xl lg:text-[4vw] font-bold tracking-tighter cursor-pointer transition-all duration-300 ${activeIdx === idx ? 'text-white' : 'text-zinc-500 hover:text-zinc-400'}`}
+        {/* FlowStack Layout */}
+        <div className="flex flex-col lg:flex-row gap-4 lg:h-[600px] min-h-[600px] lg:min-h-0 w-full">
+          {services.map((service, index) => {
+            const isHovered = hoveredIdx === index;
+            const isNothingHovered = hoveredIdx === null;
+
+            return (
+              <motion.div
+                key={service.title}
+                layout
+                onMouseEnter={() => setHoveredIdx(index)}
+                onMouseLeave={() => setHoveredIdx(null)}
+                // Click for mobile support
+                onClick={() => setHoveredIdx(hoveredIdx === index ? null : index)}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 35,
+                  mass: 1
+                }}
+                style={{
+                  flex: isHovered ? (typeof window !== 'undefined' && window.innerWidth < 1024 ? 2 : 3) : 1,
+                }}
+                className={`relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/[0.02] backdrop-blur-sm cursor-pointer transition-colors duration-500 ${isHovered ? 'border-white/20 bg-white/[0.05]' : 'border-white/5'}`}
               >
-                {srv.title}
-              </div>
-            ))}
-          </div>
+                {/* Content Overlay */}
+                <div className="relative z-20 h-full p-8 md:p-12 flex flex-col justify-between">
+                  <div>
+                    <motion.span
+                      layout
+                      className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-500 mb-8 block"
+                    >
+                      0{index + 1}
+                    </motion.span>
 
-          {/* Right: Changing Image */}
-          <div className="lg:col-span-8 lg:col-start-5 aspect-[16/9] w-full overflow-hidden bg-zinc-900 relative">
-            <AnimatePresence mode="wait">
-              <motion.img 
-                key={activeIdx}
-                src={services[activeIdx].image}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                className="w-full h-full object-cover grayscale opacity-90 absolute inset-0"
-              />
-            </AnimatePresence>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-          </div>
+                    <motion.h3
+                      layout
+                      className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white mb-6 leading-[0.95]"
+                    >
+                      {service.title.split(' ').map((word, i) => (
+                        <span key={i} className="block">{word}</span>
+                      ))}
+                    </motion.h3>
 
+                    <AnimatePresence>
+                      {isHovered && (
+                        <motion.div
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -20 }}
+                          transition={{ duration: 0.4, delay: 0.2 }}
+                          className="max-w-[320px]"
+                        >
+                          <p className="text-zinc-300 font-medium text-base leading-relaxed mb-8">
+                            {service.description}
+                          </p>
+                          <div className="flex flex-wrap gap-2">
+                            {service.tags.map(tag => (
+                              <span key={tag} className="text-[10px] font-bold uppercase tracking-widest text-zinc-300 px-4 py-2 rounded-full border border-white/10 bg-white/5 whitespace-nowrap">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  <motion.div layout className="flex justify-between items-end">
+                    <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all duration-500">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        className="text-zinc-400 group-hover:text-black transition-colors"
+                      >
+                        <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Subtle Background Glow for active card */}
+                {isHovered && (
+                  <motion.div
+                    layoutId="glow"
+                    className="absolute inset-0 z-10 bg-gradient-to-br from-white/[0.05] to-transparent pointer-events-none"
+                  />
+                )}
+              </motion.div>
+            );
+          })}
         </div>
-        
+
+        {/* Pricing Subtext */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="mt-12 text-center"
+        >
+          <p className="text-zinc-500 text-sm font-medium tracking-wide">
+            Starting from <span className="text-zinc-300">₹5,000</span>
+          </p>
+        </motion.div>
       </div>
     </section>
   );

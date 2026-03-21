@@ -4,80 +4,132 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-transparent relative overflow-hidden text-white pt-32 pb-6 px-6 sm:px-12 font-sans border-t border-zinc-900 min-h-screen flex flex-col justify-between">
+    <footer className="w-full bg-black relative overflow-hidden text-white py-32 px-6 sm:px-12 font-sans min-h-screen flex flex-col items-center justify-center">
+      
+      {/* SVG Filter for Liquid Effect */}
+      <svg className="hidden">
+        <filter id="liquid-footer">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="60" />
+        </filter>
+      </svg>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 mt-12">
-
-        {/* Left Column */}
-        <div className="flex flex-col gap-32">
-
-          <div className="flex flex-col">
-            <span className="text-[10px] font-semibold text-zinc-400 mb-2">Based in Kerala (IN) 03:54 PM</span>
-            <a href="mailto:contact@falah.dev" className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter inline-flex items-center gap-2 pb-2 border-b border-zinc-700 w-fit hover:text-zinc-300 hover:border-zinc-500 transition-colors">
-              contact@falah.dev <span className="text-xl">+</span>
-            </a>
-          </div>
-
-          <div className="flex flex-col gap-8 max-w-md">
-            <span className="text-white text-3xl font-serif leading-none">“</span>
-            <p className="text-lg md:text-xl font-semibold leading-snug tracking-tight text-zinc-300">
-              <span className="text-white">Your next project deserves world-class code.</span> Stop settling for mediocre and start working with a developer who cares as much as you do.
-            </p>
-
-            <div className="flex items-center gap-4 mt-4">
-              <div className="w-12 h-12 rounded-sm overflow-hidden bg-zinc-800 grayscale">
-                <img src="https://images.unsplash.com/photo-1620712948343-0084236a22c1?q=80&w=400&auto=format&fit=crop" alt="Abstract Avatar" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex flex-col">
-                <h4 className="text-white text-sm font-bold">Falah Fazal</h4>
-                <p className="text-zinc-500 text-xs font-semibold">Full-Stack Developer</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Right Column */}
-        <div className="flex flex-col justify-between">
-
-          <div className="flex flex-col gap-4">
-            <span className="text-xs font-semibold text-zinc-400">Subscribe to our newsletter.</span>
-            <div className="flex max-w-sm">
-              <input type="email" placeholder="Email" className="bg-transparent border border-zinc-800 border-r-0 text-white p-3 text-sm flex-1 focus:outline-none focus:border-zinc-600 rounded-l-sm" />
-              <button className="bg-transparent border border-zinc-800 border-l-0 text-white px-5 hover:bg-zinc-900 transition-colors rounded-r-sm text-lg">+</button>
-            </div>
-          </div>
-
-          <nav className="flex flex-col gap-2 mt-24">
-            {['Home', 'Work [3]','Contact'].map((item) => (
-              <a key={item} href="#" className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-white hover:text-zinc-400 transition-colors w-fit">
-                {item}
-              </a>
-            ))}
-          </nav>
-
-        </div>
+      {/* Ethereal/Liquid Smoke Effect */}
+      <div className="absolute inset-0 z-0 opacity-30" style={{ filter: 'url(#liquid-footer)' }}>
+         <motion.div 
+           animate={{
+             scale: [1, 1.3, 1],
+             opacity: [0.1, 0.15, 0.1],
+             x: [-50, 50, -50],
+             y: [-30, 30, -30],
+           }}
+           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+           className="absolute top-1/4 left-1/3 w-[900px] h-[900px] bg-white blur-[200px] rounded-full"
+         />
+         <motion.div 
+           animate={{
+             scale: [1.2, 1, 1.2],
+             opacity: [0.12, 0.08, 0.12],
+             x: [50, -50, 50],
+             y: [30, -30, 30],
+           }}
+           transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+           className="absolute bottom-1/4 right-1/3 w-[800px] h-[800px] bg-zinc-400 blur-[180px] rounded-full"
+         />
       </div>
 
-      {/* Bottom Legal / Social */}
-      <div className="relative z-10 w-full flex flex-col md:flex-row justify-between items-center text-xs font-semibold text-zinc-400 mt-32 px-4 md:px-12">
-        <div className="flex gap-6">
-          <a href="#" className="hover:text-white transition-colors">Terms of Service </a>
-          <a href="#" className="hover:text-white transition-colors">Privacy Policy </a>
-        </div>
-        <div className="flex gap-6 mt-6 md:mt-0 text-[10px] uppercase tracking-widest">
-          <a href="#" className="w-8 h-8 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-white hover:text-black transition-colors">X</a>
-          <a href="#" className="w-8 h-8 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-white hover:text-black transition-colors">Ig</a>
-          <a href="#" className="w-8 h-8 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-white hover:text-black transition-colors">Ww</a>
-          <a href="#" className="w-8 h-8 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-white hover:text-black transition-colors">In</a>
-        </div>
+      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center gap-12">
+        
+        {/* Availability Badge */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest text-zinc-400"
+        >
+          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          Available For Work
+        </motion.div>
+
+        {/* Massive CTA */}
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="text-5xl md:text-6xl lg:text-8xl font-bold tracking-tighter leading-[1] max-w-4xl"
+        >
+          Have an idea? <br className="hidden md:block" />
+          <span className="text-zinc-500">Let&apos;s build it.</span>
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-zinc-400 text-lg md:text-xl font-medium max-w-2xl -mt-2"
+        >
+          I design and develop modern websites for startups and businesses — delivered in 1–2 weeks.
+        </motion.p>
+
+        {/* Action Buttons */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 mt-8"
+        >
+          <motion.a 
+            href="https://wa.me/919745395448" 
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255,255,255,0.1)" }}
+            whileTap={{ scale: 0.95 }}
+            className="flex flex-col items-center justify-center px-10 py-5 rounded-2xl bg-white text-black transition-all w-full sm:w-auto min-w-[280px]"
+          >
+            <span className="font-bold text-sm tracking-tight mb-1.5">Start a Project</span>
+            <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">WhatsApp: +91 9745395448</span>
+          </motion.a>
+
+          <motion.a 
+            href="mailto:falahfazal10@gmail.com"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex flex-col items-center justify-center px-10 py-5 rounded-2xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all w-full sm:w-auto backdrop-blur-md min-w-[280px]"
+          >
+            <span className="font-bold text-sm tracking-tight mb-1.5">Send Email</span>
+            <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">falahfazal10@gmail.com</span>
+          </motion.a>
+        </motion.div>
+
+        {/* Centered Socials with Dividers */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="flex items-center gap-6 mt-16 text-zinc-500 text-sm font-bold uppercase tracking-widest"
+        >
+          <a href="https://www.linkedin.com/in/falahfazal/" className="hover:text-white transition-colors">LinkedIn</a>
+          <div className="w-[1px] h-4 bg-zinc-800" />
+          <a href="https://x.com/Falaah__" className="hover:text-white transition-colors">X</a>
+          <div className="w-[1px] h-4 bg-zinc-800" />
+          <a href="https://www.instagram.com/_falaaah___/" className="hover:text-white transition-colors">Instagram</a>
+          <div className="w-[1px] h-4 bg-zinc-800" />
+          <a href="https://github.com/FALAH-TECH" className="hover:text-white transition-colors">GitHub</a>
+        </motion.div>
       </div>
 
-      {/* Absolute Bottom Massive Text */}
-      <div className="relative z-0 w-full overflow-hidden flex justify-center mt-auto pt-24 translate-y-24">
-        <h1 className="text-[28vw] font-black text-white leading-[0.6] tracking-tighter select-none">
-          FALAH
-        </h1>
+      {/* Bottom Bar Info */}
+      <div className="absolute bottom-12 w-full px-12 md:px-20 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 z-10">
+        <a href="mailto:falahfazal10@gmail.com" className="hover:text-white transition-colors order-2 md:order-1">
+          falahfazal10@gmail.com
+        </a>
+        
+        <div className="order-1 md:order-2 flex items-center gap-2">
+          DESIGNED BY <span className="text-white">FALAH</span>
+        </div>
+
+        <div className="order-3 opacity-50">
+          ALL RIGHTS RESERVED © {new Date().getFullYear()}
+        </div>
       </div>
     </footer>
   );

@@ -1,10 +1,21 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    if (latest > previous && latest > 150) {
+      setIsHidden(true);
+    } else {
+      setIsHidden(false);
+    }
+  });
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
@@ -19,7 +30,15 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 text-white selection:bg-white selection:text-black mt-2">
+    <motion.header 
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: "-100%" },
+      }}
+      animate={isHidden && !isMenuOpen ? "hidden" : "visible"}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
+      className="fixed top-0 left-0 w-full z-50 text-white selection:bg-white selection:text-black"
+    >
       {/* Top Nav Line */}
       <div className="w-full flex items-center justify-between px-6 py-4 border-b border-zinc-800 bg-black/50 backdrop-blur-md relative z-[60]">
         <div className="flex justify-start">
@@ -88,19 +107,19 @@ export default function Header() {
               className="absolute bottom-12 left-6 md:left-24 right-6 md:right-24 flex justify-between items-end border-t border-zinc-800 pt-8"
             >
                <div className="flex gap-6 text-sm font-semibold tracking-widest text-zinc-400 uppercase">
-                 <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-                 <a href="#" className="hover:text-white transition-colors">Twitter</a>
-                 <a href="#" className="hover:text-white transition-colors">Github</a>
+                 <a href="https://www.linkedin.com/in/falahfazal" className="hover:text-white transition-colors">LinkedIn</a>
+                 <a href="https://x.com/Falaah__" className="hover:text-white transition-colors">X</a>
+                 <a href="https://github.com/FALAH-TECH" className="hover:text-white transition-colors">Github</a>
                </div>
 
                <div className="text-sm font-semibold tracking-widest text-zinc-400 uppercase">
-                 contact@falah.dev
+                 falahfazal10@gmail.com
                </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }
 

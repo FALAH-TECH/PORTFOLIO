@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 
 const services = [
   {
@@ -41,50 +41,69 @@ const services = [
 
 const ServiceItem = ({ service, index, setActiveIndex }: any) => {
   const ref = useRef(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 20, stiffness: 100 };
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [7, -7]), springConfig);
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-7, 7]), springConfig);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start center", "end center"]
   });
 
-  useEffect(() => {
-    return scrollYProgress.onChange((v) => {
-      if (v > 0 && v < 1) {
-        setActiveIndex(index);
-      }
-    });
-  }, [scrollYProgress, index, setActiveIndex]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.1, 1, 1, 0.1]);
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.95, 1, 1, 0.95]);
 
-  // Transform values based on scroll position within the element
-  const opacity = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.15, 1, 1, 0.15]);
-  const blur = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
-  const xOffset = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [-40, 0, 0, -40]);
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
 
   return (
-    <div ref={ref} className="min-h-screen flex flex-col justify-center w-full py-20 relative">
+    <div ref={ref} className="min-h-screen flex flex-col justify-center w-full py-20 relative perspective-[1000px]">
       <motion.div 
-        style={{ opacity, filter: blur, x: xOffset }} 
-        className="flex flex-col gap-10 w-full"
+        onViewportEnter={() => setActiveIndex(index)}
+        viewport={{ amount: 0.5 }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }}
+        style={{ opacity, scale, rotateX, rotateY }} 
+        className="flex flex-col gap-10 w-full p-12 rounded-2xl bg-zinc-950/20 border border-zinc-900/50 backdrop-blur-sm shadow-2xl transition-shadow hover:shadow-emerald-500/5"
       >
         <div className="flex flex-col lg:flex-row lg:items-center justify-between w-full border-b border-zinc-800/80 pb-8 gap-6">
-          <h2 className="text-5xl md:text-7xl lg:text-[5vw] font-sans tracking-tight text-white flex flex-col md:flex-row md:items-center gap-2 md:gap-6 font-medium leading-[1.1]">
+          <h2 className="text-5xl md:text-7xl lg:text-[5.5vw] font-bold tracking-tighter text-white font-medium leading-[1]">
              {service.title}
           </h2>
-          <span className="text-2xl text-zinc-600 font-mono self-start lg:self-auto hidden lg:block">{service.id}</span>
+          <span className="text-2xl text-zinc-700 font-mono hidden lg:block">{service.id}</span>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-12 max-w-3xl">
           {service.skills.map((skill: string, i: number) => (
-            <div key={i} className="text-sm md:text-base text-zinc-400 font-medium flex items-center gap-3">
-              <span className="w-1.5 h-1.5 rounded-full border border-zinc-600 bg-transparent"></span>
+            <motion.div 
+              key={i} 
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.1 }}
+              className="text-sm md:text-base text-zinc-400 font-medium flex items-center gap-3"
+            >
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/50 shadow-[0_0_8px_rgba(16,185,129,0.3)]"></div>
               {skill}
-            </div>
+            </motion.div>
           ))}
         </div>
         
         <div className="mt-8 flex items-center">
-           <button className="px-6 py-3 rounded-full bg-white/10 text-white font-semibold text-xs tracking-widest uppercase flex items-center gap-3 hover:bg-white hover:text-black transition-colors backdrop-blur-md">
-              View Service Details
-           </button>
+           <motion.button 
+             whileHover={{ scale: 1.05 }}
+             whileTap={{ scale: 0.95 }}
+             className="px-8 py-4 rounded-full bg-white text-black font-bold text-xs tracking-widest uppercase flex items-center gap-3 transition-colors hover:bg-zinc-200"
+            >
+              Start Project —
+           </motion.button>
         </div>
       </motion.div>
     </div>
@@ -111,11 +130,56 @@ export default function StudioServices() {
               setActiveIndex={setActiveIndex} 
             />
           ))}
+        </div>        {/* Right Sticky Visual Content - Now Minimal/Ethereal */}
+        <div className="hidden lg:block lg:col-span-5 relative">
+          <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+            
+            {/* SVG Filter for Liquid Effect */}
+            <svg className="hidden">
+              <filter id="liquid">
+                <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="50" />
+              </filter>
+            </svg>
+
+            {/* Ethereal/Liquid Smoke Effect */}
+            <div className="absolute inset-0 z-0 opacity-40" style={{ filter: 'url(#liquid)' }}>
+               <motion.div 
+                 animate={{
+                   scale: [1, 1.4, 1],
+                   opacity: [0.1, 0.2, 0.1],
+                   x: [0, 100, 0],
+                   y: [0, 50, 0],
+                 }}
+                 transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+                 className="absolute top-1/4 left-1/4 w-[800px] h-[800px] bg-white blur-[180px] rounded-full"
+               />
+               <motion.div 
+                 animate={{
+                   scale: [1.3, 1, 1.3],
+                   opacity: [0.15, 0.05, 0.15],
+                   x: [0, -80, 0],
+                   y: [0, -70, 0],
+                 }}
+                 transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+                 className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-zinc-400 blur-[150px] rounded-full"
+               />
+            </div>
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
+                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                className="relative z-10 w-full h-full flex items-center justify-center p-12"
+              >
+                {/* Visual space is now purely atmospheric smoke */}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
-
-        {/* Right Sticky Visual Content (Takes 5 columns) */}
-        
-
       </div>
     </section>
   );

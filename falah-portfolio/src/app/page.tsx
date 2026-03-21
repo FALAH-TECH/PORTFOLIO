@@ -4,10 +4,17 @@ import Header from '@/components/mugen/Header';
 import GlobalBackground from '@/components/mugen/GlobalBackground';
 import MugenHero from "@/components/mugen/Hero";
 import MugenIntro from "@/components/mugen/Intro";
-import StudioServices from "@/components/mugen/StudioServices";
+import About from "@/components/mugen/About";
+import Stats from "@/components/mugen/Stats";
+import Services from "@/components/mugen/Services";
+import TechStack from "@/components/mugen/TechStack";
 import CaseStudies from "@/components/mugen/CaseStudies";
 import Testimonials from "@/components/mugen/Testimonials";
+import Blog from "@/components/mugen/Blog";
 import Footer from "@/components/mugen/Footer";
+import Impact from "@/components/mugen/Impact";
+import CustomCursor from "@/components/mugen/CustomCursor";
+import PageLoader from "@/components/mugen/PageLoader";
 import { motion } from "framer-motion";
 
 const FadeInScroll = ({ children }: { children: React.ReactNode }) => (
@@ -23,45 +30,79 @@ const FadeInScroll = ({ children }: { children: React.ReactNode }) => (
 
 export default function Home() {
   return (
-    <main className="min-h-screen w-full bg-transparent text-white selection:bg-white selection:text-black font-sans overflow-x-hidden relative">
-      <GlobalBackground />
-      {/* 0. Header Section */}
-      <Header />
+    <>
+      {/* Global UI */}
+      <PageLoader />
+      <CustomCursor />
 
-      {/* 1. Hero Section */}
-      <div id="home">
-        <MugenHero />
-      </div>
+      <main className="min-h-screen w-full bg-transparent text-white selection:bg-white selection:text-black font-sans overflow-x-hidden relative">
+        <GlobalBackground />
+        
+        {/* Header */}
+        <Header />
 
-      {/* 2. Intro Section */}
-      <div id="studio">
+        {/* 1. Hero */}
+        <div id="home">
+          <MugenHero />
+        </div>
+
+        {/* 2. Intro */}
+        <div id="studio">
+          <FadeInScroll>
+            <MugenIntro />
+          </FadeInScroll>
+        </div>
+
+        {/* 3. About */}
+        <div id="about">
+          <FadeInScroll>
+            <About />
+          </FadeInScroll>
+        </div>
+
+        {/* 4. Stats */}
         <FadeInScroll>
-          <MugenIntro />
+          <Stats />
         </FadeInScroll>
-      </div>
 
-      {/* 3. Studio Services (Deep Scroll) */}
-      <div id="services">
-        <StudioServices />
-      </div>
+        {/* 5. Services */}
+        <div id="services">
+          <Services />
+        </div>
 
-      {/* 4. Case Studies */}
-      <div id="work">
+        {/* 6. Tech Stack */}
         <FadeInScroll>
-          <CaseStudies />
+          <TechStack />
         </FadeInScroll>
-      </div>
 
-      {/* 4. Testimonials */}
-      <FadeInScroll>
-        <Testimonials />
-      </FadeInScroll>
+        <FadeInScroll>
+          <Impact />
+        </FadeInScroll>
 
-      {/* 5. Footer */}
-      <div id="contact">
-        <Footer />
-      </div>
-    </main>
+        {/* 7. Case Studies */}
+        <div >
+          <FadeInScroll>
+            <CaseStudies />
+          </FadeInScroll>
+        </div>
+
+        {/* 8. Testimonials */}
+        <FadeInScroll>
+          <Testimonials />
+        </FadeInScroll>
+
+        {/* 9. Blog */}
+        <div id="writing">
+          <FadeInScroll>
+            <Blog />
+          </FadeInScroll>
+        </div>
+
+        {/* 10. Footer */}
+        <div id="contact">
+          <Footer />
+        </div>
+      </main>
+    </>
   );
 }
-

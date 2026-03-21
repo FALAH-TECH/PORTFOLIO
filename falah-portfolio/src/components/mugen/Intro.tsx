@@ -15,9 +15,31 @@ export default function MugenIntro() {
           </div>
           <div className="lg:col-span-9 lg:col-start-3 pr-0 md:pr-12">
             <h2 className="text-[7vw] md:text-[5vw] lg:text-[4.8vw] font-bold leading-[1.05] tracking-tighter">
-              <span className="text-zinc-500">Generic portfolios perfected the art of the pitch. </span>
-              <span className="text-white">I perfected the art of the code. When you need software that moves at the speed of your ambition, </span>
-              <span className="text-zinc-500">you need a different kind of developer.</span>
+              <motion.span 
+                initial={{ opacity: 0.2 }}
+                whileInView={{ opacity: 0.2 }}
+                transition={{ duration: 0.8 }}
+                className="text-white block"
+              >
+                {[
+                  "Generic portfolios perfected the art of the pitch.",
+                  "I perfected the art of the code.",
+                  "When you need software that moves",
+                  "at the speed of your ambition,",
+                  "you need a different kind of developer."
+                ].map((line, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0.1, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, margin: "-20%" }}
+                    transition={{ duration: 0.8, delay: i * 0.1, ease: "easeOut" }}
+                    className="block"
+                  >
+                    {line}
+                  </motion.span>
+                ))}
+              </motion.span>
             </h2>
           </div>
         </div>
