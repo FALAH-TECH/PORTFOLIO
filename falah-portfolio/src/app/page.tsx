@@ -42,23 +42,23 @@ export default function Home() {
         <Header />
 
         {/* 1. Hero */}
-        <div id="home">
+        <section id="home">
           <MugenHero />
-        </div>
+        </section>
 
         {/* 2. Intro */}
-        <div id="studio">
+        <section id="studio" aria-label="Introduction">
           <FadeInScroll>
             <MugenIntro />
           </FadeInScroll>
-        </div>
+        </section>
 
         {/* 3. About */}
-        <div id="about">
+        <section id="about">
           <FadeInScroll>
             <About />
           </FadeInScroll>
-        </div>
+        </section>
 
         {/* 4. Stats */}
         <FadeInScroll>
@@ -66,9 +66,9 @@ export default function Home() {
         </FadeInScroll>
 
         {/* 5. Services */}
-        <div id="services">
+        <section id="services">
           <Services />
-        </div>
+        </section>
 
         {/* 6. Tech Stack */}
         <FadeInScroll>
@@ -80,28 +80,28 @@ export default function Home() {
         </FadeInScroll>
 
         {/* 7. Case Studies */}
-        <div >
+        <section id="work">
           <FadeInScroll>
             <CaseStudies />
           </FadeInScroll>
-        </div>
+        </section>
 
         {/* 8. Testimonials */}
         <FadeInScroll>
           <Testimonials />
         </FadeInScroll>
 
-        {/* 9. Blog */}
-        <div id="writing">
+        {/* 9. How It Works */}
+        <section id="writing">
           <FadeInScroll>
             <Blog />
           </FadeInScroll>
-        </div>
+        </section>
 
         {/* 10. Footer */}
-        <div id="contact">
+        <section id="contact">
           <Footer />
-        </div>
+        </section>
       </main>
     </>
   );

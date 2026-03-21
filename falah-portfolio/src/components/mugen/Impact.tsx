@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Impact() {
   return (
-    <section className="w-full bg-black relative py-32 md:py-48 flex items-center justify-center overflow-hidden">
+    <section aria-label="Impact statement" className="w-full bg-black relative py-32 md:py-48 flex items-center justify-center overflow-hidden">
       <div className="max-w-5xl mx-auto px-6 text-center">
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}

@@ -8,14 +8,26 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Falah Fazal | Full-Stack Web Developer & AI Engineer",
-  description: "Portfolio of Falah Fazal – freelance full-stack developer & AI engineer crafting modern web apps, seamless UX, and AI-powered tools.",
-  keywords: ["full-stack developer", "AI engineer", "Next.js", "web development", "freelance", "Falah Fazal"],
+  title: "Falah Fazal | Freelance Web Developer for Startups & Businesses",
+  description:
+    "Falah Fazal is a freelance web developer building fast, modern websites for startups and businesses. Specializing in landing pages, business websites, and redesigns.",
+  keywords: [
+    "Falah Fazal",
+    "freelance web developer",
+    "startup website developer",
+    "business website developer",
+    "Next.js developer",
+    "frontend developer",
+    "web developer India",
+    "landing page developer",
+  ],
   authors: [{ name: "Falah Fazal", url: "https://falahfazal.dev" }],
   creator: "Falah Fazal",
+  metadataBase: new URL("https://falahfazal.dev"),
   openGraph: {
-    title: "Falah Fazal | Full-Stack Web Developer & AI Engineer",
-    description: "Portfolio of Falah Fazal – freelance full-stack developer & AI engineer crafting modern web apps, seamless UX, and AI-powered tools.",
+    title: "Falah Fazal | Freelance Web Developer for Startups & Businesses",
+    description:
+      "Freelance web developer building fast, modern websites for startups and businesses.",
     url: "https://falahfazal.dev",
     siteName: "Falah Fazal Portfolio",
     images: [
@@ -23,7 +35,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Falah Fazal – Full-Stack Developer & AI Engineer",
+        alt: "Falah Fazal – Freelance Web Developer",
       },
     ],
     locale: "en_US",
@@ -31,15 +43,19 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Falah Fazal | Full-Stack Web Developer & AI Engineer",
-    description: "Freelance developer crafting modern web apps and AI-powered tools.",
+    title: "Falah Fazal | Freelance Web Developer",
+    description:
+      "Fast, modern websites for startups and businesses.",
     creator: "@falahfazal",
     images: ["/og-image.png"],
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true },
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 };
 

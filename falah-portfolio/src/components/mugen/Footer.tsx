@@ -101,20 +101,22 @@ export default function Footer() {
         </motion.div>
 
         {/* Centered Socials with Dividers */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="flex items-center gap-6 mt-16 text-zinc-500 text-sm font-bold uppercase tracking-widest"
-        >
-          <a href="https://www.linkedin.com/in/falahfazal/" className="hover:text-white transition-colors">LinkedIn</a>
-          <div className="w-[1px] h-4 bg-zinc-800" />
-          <a href="https://x.com/Falaah__" className="hover:text-white transition-colors">X</a>
-          <div className="w-[1px] h-4 bg-zinc-800" />
-          <a href="https://www.instagram.com/_falaaah___/" className="hover:text-white transition-colors">Instagram</a>
-          <div className="w-[1px] h-4 bg-zinc-800" />
-          <a href="https://github.com/FALAH-TECH" className="hover:text-white transition-colors">GitHub</a>
-        </motion.div>
+        <nav aria-label="Social links">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="flex items-center gap-6 mt-16 text-zinc-500 text-sm font-bold uppercase tracking-widest"
+          >
+            <a href="https://www.linkedin.com/in/falahfazal/" aria-label="Visit LinkedIn profile" className="hover:text-white transition-colors">LinkedIn</a>
+            <div className="w-[1px] h-4 bg-zinc-800" aria-hidden="true" />
+            <a href="https://x.com/Falaah__" aria-label="Visit X (Twitter) profile" className="hover:text-white transition-colors">X</a>
+            <div className="w-[1px] h-4 bg-zinc-800" aria-hidden="true" />
+            <a href="https://www.instagram.com/_falaaah___/" aria-label="Visit Instagram profile" className="hover:text-white transition-colors">Instagram</a>
+            <div className="w-[1px] h-4 bg-zinc-800" aria-hidden="true" />
+            <a href="https://github.com/FALAH-TECH" aria-label="Visit GitHub profile" className="hover:text-white transition-colors">GitHub</a>
+          </motion.div>
+        </nav>
       </div>
 
       {/* Bottom Bar Info */}

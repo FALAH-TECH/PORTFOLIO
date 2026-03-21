@@ -58,18 +58,20 @@ export default function Testimonials() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col gap-10 max-w-4xl"
             >
-              <span className="text-white text-3xl font-serif leading-none">"</span>
-              <p className="text-white text-lg md:text-xl lg:text-2xl font-bold leading-[1.4] tracking-tight">
-                {current.quote}
-              </p>
+              <span className="text-white text-3xl font-serif leading-none" aria-hidden="true">"</span>
+              <blockquote>
+                <p className="text-white text-lg md:text-xl lg:text-2xl font-bold leading-[1.4] tracking-tight">
+                  {current.quote}
+                </p>
+              </blockquote>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center text-xs font-black text-white">
                   {current.initials}
                 </div>
-                <div>
-                  <p className="text-white font-bold text-xs">{current.name}</p>
-                  <p className="text-zinc-500 text-[10px] uppercase tracking-widest font-bold mt-0.5">{current.role}</p>
-                </div>
+                  <cite className="not-italic">
+                    <p className="text-white font-bold text-xs">{current.name}</p>
+                    <p className="text-zinc-500 text-[10px] uppercase tracking-widest font-bold mt-0.5">{current.role}</p>
+                  </cite>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -78,6 +80,7 @@ export default function Testimonials() {
           <div className="flex items-center gap-6 mt-16">
             <button
               onClick={() => setIdx((idx - 1 + testimonials.length) % testimonials.length)}
+              aria-label="Previous testimonial"
               className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all group"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -89,12 +92,14 @@ export default function Testimonials() {
                 <button
                   key={i}
                   onClick={() => setIdx(i)}
+                  aria-label={`Go to testimonial ${i + 1}`}
                   className={`rounded-full transition-all ${i === idx ? 'w-8 h-1.5 bg-white' : 'w-1.5 h-1.5 bg-zinc-700 hover:bg-zinc-400'}`}
                 />
               ))}
             </div>
             <button
               onClick={() => setIdx((idx + 1) % testimonials.length)}
+              aria-label="Next testimonial"
               className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all group"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">

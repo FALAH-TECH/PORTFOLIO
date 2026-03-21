@@ -35,7 +35,7 @@ export default function About() {
               <div className="w-full h-full bg-zinc-900 flex items-center justify-center overflow-hidden">
                 <img 
                   src="/profile.png" 
-                  alt="Falah Fazal" 
+                  alt="Portrait of Falah Fazal, freelance web developer based in Kerala" 
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105"
                 />
               </div>

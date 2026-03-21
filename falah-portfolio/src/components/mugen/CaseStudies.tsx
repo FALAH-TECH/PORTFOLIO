@@ -29,7 +29,7 @@ const ProjectCard = ({ project, idx }: { project: typeof projects[0], idx: numbe
         <motion.img
           style={{ y, scale: 1.2 }}
           src={project.image}
-          alt={project.title}
+          alt={`Preview of ${project.title} — ${project.shortDescription}`}
           className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
         />
       </div>
@@ -86,6 +86,7 @@ const ProjectCard = ({ project, idx }: { project: typeof projects[0], idx: numbe
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
+              aria-label={`View live demo of ${project.title}`}
               className="px-4 py-2 rounded-full bg-white/10 backdrop-blur text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all"
             >
               Live ↗
@@ -97,12 +98,13 @@ const ProjectCard = ({ project, idx }: { project: typeof projects[0], idx: numbe
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
+              aria-label={`View source code for ${project.title}`}
               className="px-4 py-2 rounded-full bg-white/10 backdrop-blur text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all"
             >
               Code →
             </a>
           )}
-          <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center backdrop-blur-md group-hover:bg-white group-hover:text-black transition-all duration-700">
+          <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center backdrop-blur-md group-hover:bg-white group-hover:text-black transition-all duration-700" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>

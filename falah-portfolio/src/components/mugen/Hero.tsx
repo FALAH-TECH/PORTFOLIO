@@ -22,7 +22,8 @@ export default function MugenHero() {
               </motion.span>
             ))}
           </h1>
-          <h1 
+          <span 
+            aria-hidden="true"
             className="text-[22vw] md:text-[20vw] font-black uppercase tracking-tighter leading-[0.75] text-transparent z-0 relative -mt-[4vw] md:-mt-[2vw] overflow-hidden flex"
             style={{ WebkitTextStroke: "2px rgba(255,255,255,0.1)" }}
           >
@@ -36,7 +37,7 @@ export default function MugenHero() {
                 {char}
               </motion.span>
             ))}
-          </h1>
+          </span>
         </div>
       </div>
 
@@ -70,6 +71,7 @@ export default function MugenHero() {
       >
         <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-zinc-600">Scroll</span>
         <motion.div
+          aria-hidden="true"
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           className="w-[1px] h-8 bg-gradient-to-b from-zinc-500 to-transparent"
