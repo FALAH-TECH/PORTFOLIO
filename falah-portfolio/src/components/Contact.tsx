@@ -17,7 +17,7 @@ export default function Contact() {
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            src="https://images.unsplash.com/photo-1531297172867-4f40a36d158e?q=80&w=2070&auto=format&fit=crop" 
+            src="/projects/msa-lbscek.png" 
             alt="Workspace" 
             className="w-full max-w-sm h-64 md:h-96 object-cover rounded-xl grayscale"
           />

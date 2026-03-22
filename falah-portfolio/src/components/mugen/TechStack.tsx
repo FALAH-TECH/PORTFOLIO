@@ -8,8 +8,8 @@ const tools = [
 ];
 
 const tools2 = [
-  "GraphQL", "Docker", "AWS", "Vercel", "Git", "MongoDB",
-  "Redux", "FastAPI", "Stripe", "Cloudflare", "Linux", "REST APIs",
+  "Vercel", "Git", "MongoDB",
+  "Stripe", "REST APIs",
 ];
 
 const MarqueeRow = ({ items, reverse = false }: { items: string[], reverse?: boolean }) => (

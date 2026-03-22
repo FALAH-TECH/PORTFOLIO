@@ -16,7 +16,7 @@ export default function Projects() {
         </div>
         <div className="flex md:justify-end items-end relative">
           <motion.img 
-            src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop"
+            src="/projects/msa-lbscek.png"
             alt="Abstract design flow"
             className="w-full max-w-sm h-48 object-cover rounded-xl grayscale"
             initial={{ opacity: 0, x: 20 }}
@@ -74,8 +74,8 @@ export default function Projects() {
             
             <div className="space-y-4 text-[10px] uppercase tracking-widest">
               <div className="flex justify-between border-b border-white/10 pb-2">
-                <span className="font-semibold text-zinc-500">Focus</span>
-                <span className="text-white text-right max-w-[60%] truncate">{project.focus}</span>
+                <span className="font-semibold text-zinc-500">Outcome</span>
+                <span className="text-white text-right max-w-[60%] truncate">{project.description}</span>
               </div>
               <div className="flex justify-between pb-2">
                 <span className="font-semibold text-zinc-500">Tech Stack</span>

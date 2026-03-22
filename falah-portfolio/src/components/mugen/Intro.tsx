@@ -22,11 +22,8 @@ export default function MugenIntro() {
                 className="text-white block"
               >
                 {[
-                  "Generic portfolios perfected the art of the pitch.",
-                  "I perfected the art of the code.",
-                  "When you need software that moves",
-                  "at the speed of your ambition,",
-                  "you need a different kind of developer."
+                  "I build MVPs and web products for early-stage startups —",
+                  "fast, clean, and ready to launch in 1–2 weeks.",
                 ].map((line, i) => (
                   <motion.span
                     key={i}

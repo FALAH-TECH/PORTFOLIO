@@ -80,7 +80,7 @@ export default function Hero() {
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop" 
+            src="/projects/msa-lbscek.png" 
             alt="Developer coding setup" 
             className="w-full h-full object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-700 md:absolute md:inset-6 md:w-[calc(100%-3rem)] md:h-[calc(100%-3rem)]"
           />

@@ -10,10 +10,10 @@ export const siteData = {
       id: "project-1",
       title: "MSA LBSCEK Website",
       category: "Web Development",
-      description: "Official website built for the Microsoft Student Ambassadors community at LBS College of Engineering.",
-      focus: "Modern UI, responsive layout, and community platform.",
+      description: "Serves 200+ students — replaced manual processes with a fast, accessible web platform.",
+      focus: "Official website for the MSA community at LBS College of Engineering.",
       technologies: ["React", "Next.js", "Tailwind CSS"],
-      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop",
+      image: "#111111",
       link: "#"
     },
     {
@@ -23,17 +23,17 @@ export const siteData = {
       description: "An AI-assisted lecture intelligence mobile application that transcribes lectures, organizes notes, and generates study insights.",
       focus: "AI powered productivity tool for students.",
       technologies: ["React", "AI APIs", "Cloud storage"],
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop",
+      image: "#111111",
       link: "#"
     },
     {
       id: "project-3",
       title: "LifeLoop AI",
       category: "Healthcare",
-      description: "An AI medical companion designed to assist patients during post-surgery recovery with reminders, health monitoring, and smart guidance.",
-      focus: "Healthcare AI assistant.",
+      description: "Real-time vitals monitoring and post-surgery tracking — built with AI models and reviewed by medical professionals.",
+      focus: "Healthcare AI assistant for recovery monitoring.",
       technologies: ["AI integration", "React", "Health tracking system"],
-      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop",
+      image: "#0a0a0a",
       link: "#"
     }
   ],

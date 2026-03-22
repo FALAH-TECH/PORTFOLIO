@@ -8,19 +8,22 @@ const services = [
     title: "Landing Page Design & Development",
     description: "High-converting landing pages designed to stand out and load fast. Delivered in 5–7 days.",
     tags: ["UI/UX", "Conversion", "Fast Delivery"],
-    color: "rgba(255, 255, 255, 0.05)"
+    color: "rgba(255, 255, 255, 0.05)",
+    price: "₹3,000"
   },
   {
     title: "Business Website",
     description: "Modern, responsive websites for small businesses. Built for clarity, speed, and real-world use.",
     tags: ["Responsive", "SEO", "Performance"],
-    color: "rgba(200, 200, 200, 0.05)"
+    color: "rgba(200, 200, 200, 0.05)",
+    price: "₹8,000"
   },
   {
     title: "Website Redesign",
     description: "Upgrade outdated websites into clean, premium experiences with better UI and performance.",
     tags: ["UI Revamp", "Optimization", "Modernization"],
-    color: "rgba(150, 150, 150, 0.05)"
+    color: "rgba(150, 150, 150, 0.05)",
+    price: "₹5,000"
   }
 ];
 
@@ -113,12 +116,19 @@ export default function Services() {
 
                     <motion.h3
                       layout
-                      className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white mb-6 leading-[0.95]"
+                      className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white mb-4 leading-[0.95]"
                     >
                       {service.title.split(' ').map((word, i) => (
                         <span key={i} className="block">{word}</span>
                       ))}
                     </motion.h3>
+
+                    <motion.span
+                      layout
+                      className="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-300 mb-8 block opacity-80"
+                    >
+                      Starting from {service.price}
+                    </motion.span>
 
                     <AnimatePresence>
                       {isHovered && (
@@ -171,18 +181,7 @@ export default function Services() {
           })}
         </div>
 
-        {/* Pricing Subtext */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <p className="text-zinc-500 text-sm font-medium tracking-wide">
-            Starting from <span className="text-zinc-300">₹5,000</span>
-          </p>
-        </motion.div>
+
       </div>
     </section>
   );

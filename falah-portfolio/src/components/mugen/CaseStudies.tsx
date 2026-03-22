@@ -26,12 +26,22 @@ const ProjectCard = ({ project, idx }: { project: typeof projects[0], idx: numbe
       data-cursor="View →"
     >
       <div className="absolute inset-0 overflow-hidden">
-        <motion.img
-          style={{ y, scale: 1.2 }}
-          src={project.image}
-          alt={`Preview of ${project.title} — ${project.shortDescription}`}
-          className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
-        />
+        {project.image.startsWith('#') ? (
+          <div 
+            style={{ backgroundColor: project.image }} 
+            className="w-full h-full grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center p-12 text-center"
+          >
+            {/* Project Title Placeholder if needed, but user said "No text" for MSA */}
+            {/* So I'll just leave it empty as a solid background */}
+          </div>
+        ) : (
+          <motion.img
+            style={{ y, scale: 1.2 }}
+            src={project.image}
+            alt={`Preview of ${project.title} — ${project.shortDescription}`}
+            className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          />
+        )}
       </div>
 
       {/* Overlay Gradient */}
@@ -40,8 +50,8 @@ const ProjectCard = ({ project, idx }: { project: typeof projects[0], idx: numbe
       {/* Text Content */}
       <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 flex justify-between items-end z-10">
         <div className="flex flex-col gap-2 w-[85%] sm:w-2/3 lg:w-3/4 xl:w-2/3">
-          <span className="text-zinc-300 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 pb-2">
-            Featured Project
+          <span className="text-zinc-300 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] opacity-100 transition-all duration-500 translate-y-0 pb-2">
+            {project.outcome}
           </span>
           <h3 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-tighter leading-[0.9] group-hover:translate-x-4 transition-transform duration-700">
             {project.title.split(" ").map((word, i) => (
