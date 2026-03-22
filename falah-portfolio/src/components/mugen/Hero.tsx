@@ -1,56 +1,56 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export default function MugenHero() {
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-transparent border-b border-zinc-900 border-opacity-50">
-      
+
       {/* Massive Background Typography */}
       <div className="absolute inset-0 flex flex-col items-center justify-center z-0 pointer-events-none select-none w-full h-full pt-16">
         <div className="flex flex-col items-center justify-center w-full relative">
           <h1 className="text-[22vw] md:text-[20vw] font-black uppercase tracking-tighter leading-[0.75] text-white z-0 relative mix-blend-difference overflow-hidden flex">
             {"FALAH".split("").map((char, i) => (
-              <motion.span
+              <m.span
                 key={i}
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
-                transition={{ duration: 1, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.8, delay: i * 0.04, ease: [0.22, 1, 0.36, 1] }}
               >
                 {char}
-              </motion.span>
+              </m.span>
             ))}
           </h1>
-          <span 
+          <span
             aria-hidden="true"
             className="text-[22vw] md:text-[20vw] font-black uppercase tracking-tighter leading-[0.75] text-transparent z-0 relative -mt-[4vw] md:-mt-[2vw] overflow-hidden flex"
             style={{ WebkitTextStroke: "2px rgba(255,255,255,0.1)" }}
           >
-             {"STUDIO".split("").map((char, i) => (
-              <motion.span
+            {"STUDIO".split("").map((char, i) => (
+              <m.span
                 key={i}
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
-                transition={{ duration: 1, delay: 0.4 + (i * 0.05), ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.8, delay: 0.3 + (i * 0.04), ease: [0.22, 1, 0.36, 1] }}
               >
                 {char}
-              </motion.span>
+              </m.span>
             ))}
           </span>
         </div>
       </div>
 
       {/* Top Center: Availability Badge */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.2 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
         className="absolute top-28 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/60 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest text-zinc-400"
       >
         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
         Available For Work
-      </motion.div>
+      </m.div>
 
       {/* Bottom Left: Info */}
       <div className="absolute bottom-12 left-6 md:left-[5%] flex items-center gap-4 z-10">
@@ -63,20 +63,20 @@ export default function MugenHero() {
       </div>
 
       {/* Bottom Center: Scroll Indicator */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.5 }}
+        transition={{ duration: 0.6, delay: 1 }}
         className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
         <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-zinc-600">Scroll</span>
-        <motion.div
+        <m.div
           aria-hidden="true"
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           className="w-[1px] h-8 bg-gradient-to-b from-zinc-500 to-transparent"
         />
-      </motion.div>
+      </m.div>
 
       {/* Bottom Right: Hero Description + CTAs */}
       <div className="absolute bottom-12 right-6 md:right-[5%] max-w-sm z-10 pr-0 md:pr-12 flex flex-col items-end gap-5">
@@ -84,9 +84,9 @@ export default function MugenHero() {
           <strong className="text-white">Most websites are forgettable. <br/>I build the ones people remember.</strong><br />
           <span className="text-sm mt-2 block">Fast, modern websites for startups and businesses — delivered in 1–2 weeks.</span>
         </p>
-        
+
         <p className="text-xs text-zinc-500 italic mt-[-8px]">
-          I don't follow templates. I build custom experiences.
+          I don&apos;t follow templates. I build custom experiences.
         </p>
 
         <div className="flex flex-col items-end gap-3 mt-1">

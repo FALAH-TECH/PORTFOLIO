@@ -95,3 +95,20 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #52525b;
 }
+
+/* Marquee animations — pure CSS, zero JS */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-reverse {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+.animate-marquee-reverse {
+  animation: marquee-reverse 25s linear infinite;
+}

@@ -1,47 +1,53 @@
 "use client";
 
-import Header from '@/components/mugen/Header';
-import GlobalBackground from '@/components/mugen/GlobalBackground';
-import MugenHero from "@/components/mugen/Hero";
-import MugenIntro from "@/components/mugen/Intro";
-import About from "@/components/mugen/About";
-import Stats from "@/components/mugen/Stats";
-import Services from "@/components/mugen/Services";
-import TechStack from "@/components/mugen/TechStack";
-import CaseStudies from "@/components/mugen/CaseStudies";
-import Testimonials from "@/components/mugen/Testimonials";
-import Blog from "@/components/mugen/Blog";
-import Footer from "@/components/mugen/Footer";
-import Impact from "@/components/mugen/Impact";
-import CustomCursor from "@/components/mugen/CustomCursor";
-import PageLoader from "@/components/mugen/PageLoader";
-import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 
+// ─── Above-fold components — eagerly loaded ───────────────────────────────────
+import Header from "@/components/mugen/Header";
+import GlobalBackground from "@/components/mugen/GlobalBackground";
+import MugenHero from "@/components/mugen/Hero";
+import PageLoader from "@/components/mugen/PageLoader";
+import CustomCursor from "@/components/mugen/CustomCursor";
+
+// ─── Below-fold components — dynamically loaded ───────────────────────────────
+const MugenIntro    = dynamic(() => import("@/components/mugen/Intro"),       { ssr: false });
+const About         = dynamic(() => import("@/components/mugen/About"),       { ssr: false });
+const Stats         = dynamic(() => import("@/components/mugen/Stats"),       { ssr: false });
+const Services      = dynamic(() => import("@/components/mugen/Services"),    { ssr: false });
+const TechStack     = dynamic(() => import("@/components/mugen/TechStack"),   { ssr: false });
+const Impact        = dynamic(() => import("@/components/mugen/Impact"),      { ssr: false });
+const CaseStudies   = dynamic(() => import("@/components/mugen/CaseStudies"), { ssr: false });
+const Testimonials  = dynamic(() => import("@/components/mugen/Testimonials"),{ ssr: false });
+const Blog          = dynamic(() => import("@/components/mugen/Blog"),        { ssr: false });
+const Footer        = dynamic(() => import("@/components/mugen/Footer"),      { ssr: false });
+
+// Scroll-triggered fade-in wrapper — uses LazyMotion m.div, only activates on scroll
 const FadeInScroll = ({ children }: { children: React.ReactNode }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 50 }}
+  <m.div
+    initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-100px" }}
-    transition={{ duration: 0.8, ease: "easeOut" }}
+    viewport={{ once: true, margin: "-80px" }}
+    transition={{ duration: 0.7, ease: "easeOut" }}
   >
     {children}
-  </motion.div>
+  </m.div>
 );
 
 export default function Home() {
   return (
-    <>
+    <LazyMotion features={domAnimation} strict>
       {/* Global UI */}
       <PageLoader />
       <CustomCursor />
 
       <main className="min-h-screen w-full bg-transparent text-white selection:bg-white selection:text-black font-sans overflow-x-hidden relative">
         <GlobalBackground />
-        
+
         {/* Header */}
         <Header />
 
-        {/* 1. Hero */}
+        {/* 1. Hero — above fold, no lazy wrapper */}
         <section id="home">
           <MugenHero />
         </section>
@@ -91,18 +97,18 @@ export default function Home() {
           <Testimonials />
         </FadeInScroll>
 
-        {/* 9. How It Works */}
+        {/* 9. Blog */}
         <section id="writing">
           <FadeInScroll>
             <Blog />
           </FadeInScroll>
         </section>
 
-        {/* 10. Footer */}
+        {/* 10. Footer / Contact */}
         <section id="contact">
           <Footer />
         </section>
       </main>
-    </>
+    </LazyMotion>
   );
 }
