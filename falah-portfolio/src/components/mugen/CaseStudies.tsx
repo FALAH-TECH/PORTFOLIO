@@ -1,12 +1,11 @@
 "use client";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { projects } from "@/lib/projects";
 
 const ProjectCard = ({ project, idx }: { project: typeof projects[0], idx: number }) => {
-  const ref = useRef(null);
-  const router = useRouter();
+  const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
@@ -15,25 +14,22 @@ const ProjectCard = ({ project, idx }: { project: typeof projects[0], idx: numbe
   const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration: 1, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      onClick={() => router.push(`//${project.slug}`)}
       className={`group relative overflow-hidden rounded-2xl bg-zinc-900 ${project.colSpan} cursor-pointer min-h-[450px] md:min-h-[550px] lg:h-[65vh] block`}
-      data-cursor="View →"
     >
+      <Link
+        href={`/work/${project.slug}`}
+        className="absolute inset-0 z-20"
+        aria-label={`View ${project.title} case study`}
+      />
+
       <div className="absolute inset-0 overflow-hidden">
         {project.image.startsWith('#') ? (
-          <div 
-            style={{ backgroundColor: project.image }} 
-            className="w-full h-full grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center p-12 text-center"
-          >
-            {/* Project Title Placeholder if needed, but user said "No text" for MSA */}
-            {/* So I'll just leave it empty as a solid background */}
-          </div>
+          <div
+            style={{ backgroundColor: project.image }}
+            className="w-full h-full"
+          />
         ) : (
           <motion.img
             style={{ y, scale: 1.2 }}
@@ -89,13 +85,12 @@ const ProjectCard = ({ project, idx }: { project: typeof projects[0], idx: numbe
         </div>
 
         {/* Links */}
-        <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transform translate-y-8 group-hover:translate-y-0 transition-all duration-500">
+        <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transform translate-y-8 group-hover:translate-y-0 transition-all duration-500 relative z-30">
           {project.liveUrl && (
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
               aria-label={`View live demo of ${project.title}`}
               className="px-4 py-2 rounded-full bg-white/10 backdrop-blur text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all"
             >
@@ -107,7 +102,6 @@ const ProjectCard = ({ project, idx }: { project: typeof projects[0], idx: numbe
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
               aria-label={`View source code for ${project.title}`}
               className="px-4 py-2 rounded-full bg-white/10 backdrop-blur text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all"
             >
@@ -121,7 +115,7 @@ const ProjectCard = ({ project, idx }: { project: typeof projects[0], idx: numbe
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -141,7 +135,6 @@ export default function CaseStudies() {
               PROJECTS
             </motion.h2>
           </div>
-          
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">

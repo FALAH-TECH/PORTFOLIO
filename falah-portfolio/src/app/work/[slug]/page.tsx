@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getProjectBySlug, projects } from "@/lib/projects";
 import Link from "next/link";
+import Image from "next/image";
 import { Metadata } from "next";
 
 interface Props {
@@ -41,11 +42,18 @@ export default async function WorkDetailPage({ params }: Props) {
 
       {/* Hero Image */}
       <div className="w-full h-[70vh] relative overflow-hidden">
-        <img
-          src={project.coverImage}
-          alt={project.title}
-          className="w-full h-full object-cover grayscale opacity-50"
-        />
+        {project.coverImage.startsWith('#') ? (
+          <div className="w-full h-full" style={{ backgroundColor: project.coverImage }} />
+        ) : (
+          <Image
+            src={project.coverImage}
+            alt={project.title}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover grayscale opacity-50"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
         <div className="absolute bottom-0 left-0 w-full p-12 md:p-20">
           <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-500 mb-4 block">

@@ -1,7 +1,7 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-
 
 
 export default function About() {
@@ -33,10 +33,13 @@ export default function About() {
           >
             <div className="relative aspect-[4/5] max-w-md overflow-hidden rounded-3xl">
               <div className="w-full h-full bg-zinc-900 flex items-center justify-center overflow-hidden">
-                <img 
-                  src="/profile.png" 
-                  alt="Portrait of Falah Fazal, freelance web developer based in Kerala" 
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105"
+              <Image
+                  src="/profile.png"
+                  alt="Portrait of Falah Fazal, freelance web developer based in Kerala"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 400px"
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105"
+                  loading="lazy"
                 />
               </div>
               {/* Decorative corner */}

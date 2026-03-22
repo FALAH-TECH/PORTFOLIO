@@ -86,48 +86,35 @@ export default function MugenHero() {
         </p>
         
         <p className="text-xs text-zinc-500 italic mt-[-8px]">
-          I don’t follow templates. I build custom experiences.
+          I don't follow templates. I build custom experiences.
         </p>
 
         <div className="flex flex-col items-end gap-3 mt-1">
           <div className="flex flex-wrap items-center justify-end gap-3">
-            <motion.a
+            <a
               href="#contact"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.4 }}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
               className="flex items-center justify-center px-6 py-3 rounded-2xl bg-white text-black font-bold text-xs uppercase tracking-wider hover:bg-zinc-200 transition-all"
             >
               Start a Project
-            </motion.a>
-            <motion.a
+            </a>
+            <a
               href="#work"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.5 }}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
               className="flex items-center justify-center px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-white font-bold text-xs uppercase tracking-wider backdrop-blur-md hover:bg-white/10 transition-all"
             >
               View Work
-            </motion.a>
+            </a>
           </div>
 
-          <motion.a
+          <a
             href="/resume.pdf"
             download
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.6 }}
             className="flex items-center gap-2 mt-2 text-[10px] text-zinc-500 hover:text-zinc-300 font-bold uppercase tracking-widest transition-colors"
           >
             Download Resume
             <svg width="10" height="10" viewBox="0 0 12 12" fill="none" className="shrink-0">
               <path d="M6 1v7M2 8l4 3 4-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-          </motion.a>
+          </a>
         </div>
       </div>
 
