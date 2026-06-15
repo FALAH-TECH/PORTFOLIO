@@ -5,7 +5,7 @@ A modern, cinematic developer portfolio built to showcase my projects, experimen
 This site highlights my work, ideas, and technical journey as I explore full-stack development, AI tools, and modern web technologies.
 
 🔗 Live Website:
-https://your-portfolio-link.com
+https://falahdev.vercel.app/
 
 ✨ About
 
@@ -104,9 +104,9 @@ If you want to collaborate or work together:
 
 GitHub: https://github.com/FALAH-TECH
 
-LinkedIn: Add your LinkedIn
+LinkedIn: https://www.linkedin.com/in/falahfazal/
 
-Email: Add your email
+Email: falahfazal10@gmail.com
 
 ⭐ Support
 
