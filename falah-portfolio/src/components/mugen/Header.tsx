@@ -36,7 +36,7 @@ export default function Header() {
       }}
       animate={isHidden && !isMenuOpen ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
-      className="fixed top-0 left-0 w-full z-50 text-white selection:bg-white selection:text-black"
+      className="fixed top-0 left-0 w-full z-[999] text-white selection:bg-white selection:text-black"
     >
       {/* Top Nav Line */}
       <div className="w-full flex items-center justify-between px-6 py-4 border-b border-zinc-800 bg-black/50 backdrop-blur-md relative z-[60]">

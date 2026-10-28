@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { siteData } from "@/lib/data";
 
 export default function Projects() {
@@ -15,7 +15,7 @@ export default function Projects() {
           </h2>
         </div>
         <div className="flex md:justify-end items-end relative">
-          <motion.img 
+          <m.img 
             src="/projects/msa-lbscek.png"
             alt="Abstract design flow"
             className="w-full max-w-sm h-48 object-cover rounded-xl grayscale"
@@ -38,7 +38,7 @@ export default function Projects() {
 
       {/* Massive Section Title */}
       <div className="px-6 md:px-12 mb-16 overflow-hidden">
-        <motion.h1 
+        <m.h1 
           initial={{ y: "100%" }}
           whileInView={{ y: 0 }}
           viewport={{ once: true }}
@@ -46,14 +46,14 @@ export default function Projects() {
           className="text-[15vw] font-bold tracking-tighter uppercase leading-[0.8]"
         >
           WORK™
-        </motion.h1>
+        </m.h1>
       </div>
 
       {/* Project Grid Matching Screenshot Cards */}
       <div className="bg-zinc-950 p-6 md:p-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
         
         {siteData.projects.map((project, idx) => (
-          <motion.div 
+          <m.div 
             key={project.id}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -82,11 +82,11 @@ export default function Projects() {
                 <span className="text-white text-right max-w-[60%] truncate">{project.technologies.join(', ')}</span>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         ))}
 
         {/* Dummy Service/Pricing Card to match the $99/Month card in the template */}
-        <motion.div 
+        <m.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -114,7 +114,7 @@ export default function Projects() {
           <a href="#contact" className="block w-full text-center bg-white text-black py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-zinc-300 transition-colors">
             Contact Me
           </a>
-        </motion.div>
+        </m.div>
 
       </div>
     </section>

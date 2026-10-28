@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useCallback, useEffect } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 interface Step {
   title: string;
@@ -75,7 +75,7 @@ export default function StepCarousel({ steps, autoPlay = false, interval = 4000 
 
   return (
     <div 
-      className="relative w-full max-w-5xl mx-auto h-[480px] md:h-[420px] flex flex-col items-center justify-center"
+      className="relative w-full max-w-5xl mx-auto h-[480px] md:h-[420px] flex flex-col items-center justify-center relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -90,17 +90,21 @@ export default function StepCarousel({ steps, autoPlay = false, interval = 4000 
             { scale: 0.94, opacity: 0.3, y: 35, zIndex: 10 };
 
           return (
-            <motion.div
+            <m.div
               key={i}
-              initial={false}
               animate={{
                 scale: layout.scale,
                 opacity: layout.opacity,
-                y: layout.y
+                y: layout.y,
+                filter: role === "active" ? "blur(0px)" : "blur(4px)",
               }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ 
+                duration: 0.8, 
+                ease: [0.16, 1, 0.3, 1],
+                opacity: { duration: 0.4 }
+              }}
               style={{ zIndex: layout.zIndex }}
-              className={`absolute inset-0 w-full h-full rounded-[2.5rem] bg-[#050505] border border-white/5 p-10 md:p-16 lg:p-20 flex flex-col justify-center overflow-hidden shadow-2xl ${role === "active" ? "pointer-events-auto shadow-[0_20px_60px_rgba(0,0,0,0.8)]" : "pointer-events-none"}`}
+              className={`absolute inset-0 w-full h-full rounded-[2.5rem] bg-[#050505] border border-white/5 p-10 md:p-16 lg:p-20 flex flex-col justify-center overflow-hidden shadow-2xl transition-colors duration-700 ${role === "active" ? "pointer-events-auto shadow-[0_20px_60px_rgba(0,0,0,0.8)] border-white/10" : "pointer-events-none border-white/5"}`}
             >
               {/* Subtle top-light gradient background inside card matching premium aesthetic */}
               <div className="absolute inset-0 bg-gradient-to-b from-white/[0.04] to-transparent pointer-events-none" />
@@ -116,7 +120,7 @@ export default function StepCarousel({ steps, autoPlay = false, interval = 4000 
                   {step.description}
                 </p>
               </div>
-            </motion.div>
+            </m.div>
           );
         })}
       </div>

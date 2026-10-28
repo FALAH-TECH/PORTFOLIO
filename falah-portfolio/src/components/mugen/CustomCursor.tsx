@@ -1,9 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { m, useMotionValue, useSpring } from "framer-motion";
+
+// Detect touch devices at module level so hook rules are not violated
+const isTouchDevice =
+  typeof window !== "undefined" &&
+  ("ontouchstart" in window || navigator.maxTouchPoints > 0);
 
 export default function CustomCursor() {
+  if (isTouchDevice) return null;
   const [isHovering, setIsHovering] = useState(false);
   const [isPointer, setIsPointer] = useState(false);
   const [cursorText, setCursorText] = useState("");
@@ -61,8 +67,8 @@ export default function CustomCursor() {
   return (
     <>
       {/* Inner Dot */}
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
+      <m.div
+        className="custom-cursor fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
         style={{
           x: dotX,
           y: dotY,
@@ -70,7 +76,7 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
       >
-        <motion.div
+        <m.div
           className="bg-white rounded-full"
           animate={{
             width: isPointer ? (cursorText ? 80 : 12) : 6,
@@ -78,11 +84,11 @@ export default function CustomCursor() {
           }}
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
         />
-      </motion.div>
+      </m.div>
 
       {/* Outer Ring */}
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9998]"
+      <m.div
+        className="custom-cursor fixed top-0 left-0 pointer-events-none z-[9998]"
         style={{
           x: ringX,
           y: ringY,
@@ -90,7 +96,7 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
       >
-        <motion.div
+        <m.div
           className="rounded-full border border-white/40"
           animate={{
             width: isPointer ? (cursorText ? 0 : 48) : 32,
@@ -99,12 +105,12 @@ export default function CustomCursor() {
           }}
           transition={{ type: "spring", stiffness: 200, damping: 25 }}
         />
-      </motion.div>
+      </m.div>
 
       {/* Cursor Text Label */}
       {cursorText && (
-        <motion.div
-          className="fixed top-0 left-0 pointer-events-none z-[9999] flex items-center justify-center text-[10px] font-bold uppercase tracking-widest text-black bg-white rounded-full"
+        <m.div
+          className="custom-cursor fixed top-0 left-0 pointer-events-none z-[9999] flex items-center justify-center text-[10px] font-bold uppercase tracking-widest text-black bg-white rounded-full"
           style={{
             x: dotX,
             y: dotY,
@@ -119,7 +125,7 @@ export default function CustomCursor() {
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
         >
           {cursorText}
-        </motion.div>
+        </m.div>
       )}
     </>
   );

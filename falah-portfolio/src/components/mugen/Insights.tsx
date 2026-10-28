@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export default function Insights() {
   const steps = [
@@ -31,7 +31,7 @@ export default function Insights() {
       <div className="max-w-7xl mx-auto">
         
         <div className="flex flex-col mb-16 md:mb-24">
-          <motion.h2 
+          <m.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -39,12 +39,12 @@ export default function Insights() {
           >
             How It Works <br />
             <span className="text-zinc-600 md:text-[0.65em] tracking-tight">A simple process to bring your idea to life.</span>
-          </motion.h2>
+          </m.h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {steps.map((step, idx) => (
-            <motion.div 
+            <m.div 
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +63,7 @@ export default function Insights() {
               <p className="text-zinc-400 font-medium leading-relaxed text-sm group-hover:text-zinc-300 transition-colors">
                 {step.description}
               </p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { siteData } from "@/lib/data";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
@@ -50,7 +50,7 @@ export default function Testimonials() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen max-w-5xl h-96 bg-zinc-900/20 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container max-w-4xl mx-auto px-6 relative z-10">
-        <motion.div 
+        <m.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -58,11 +58,11 @@ export default function Testimonials() {
           className="flex justify-center mb-12"
         >
           <Quote className="w-12 h-12 text-zinc-700" strokeWidth={1} />
-        </motion.div>
+        </m.div>
 
         <div className="relative h-[300px] md:h-[250px] flex items-center justify-center">
           <AnimatePresence initial={false} custom={direction}>
-            <motion.div
+            <m.div
               key={index}
               custom={direction}
               variants={variants}
@@ -85,7 +85,7 @@ export default function Testimonials() {
               <span className="text-zinc-500 text-sm mt-1 block">
                 {testimonials[index].role}
               </span>
-            </motion.div>
+            </m.div>
           </AnimatePresence>
         </div>
 

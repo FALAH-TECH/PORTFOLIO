@@ -5,10 +5,10 @@ import { m } from "framer-motion";
 export default function MugenHero() {
 
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-transparent border-b border-zinc-900 border-opacity-50">
+    <section className="relative h-screen w-full flex items-start justify-center pt-24 md:items-center md:justify-center md:pt-0 overflow-hidden bg-transparent border-b border-zinc-900 border-opacity-50">
 
       {/* Massive Background Typography */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-0 pointer-events-none select-none w-full h-full pt-16">
+      <div className="absolute inset-0 flex flex-col items-center justify-start pt-[28vh] md:justify-center md:pt-16 z-0 pointer-events-none select-none w-full h-full">
         <div className="flex flex-col items-center justify-center w-full relative">
           <h1 className="text-[22vw] md:text-[20vw] font-black uppercase tracking-tighter leading-[0.75] text-white z-0 relative mix-blend-difference overflow-hidden flex">
             {"FALAH".split("").map((char, i) => (
@@ -46,7 +46,7 @@ export default function MugenHero() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
-        className="absolute top-28 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/60 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest text-zinc-400"
+        className="absolute top-[12vh] md:top-28 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/60 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest text-zinc-400"
       >
         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
         Available For Work
@@ -106,7 +106,7 @@ export default function MugenHero() {
           </div>
 
           <a
-            href="/resume.pdf"
+            href="/RESUME%202026%20JUNE.pdf"
             download
             className="flex items-center gap-2 mt-2 text-[10px] text-zinc-500 hover:text-zinc-300 font-bold uppercase tracking-widest transition-colors"
           >

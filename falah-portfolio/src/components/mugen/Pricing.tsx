@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export default function Pricing() {
   const tiers = [
@@ -29,14 +29,14 @@ export default function Pricing() {
     <section className="w-full bg-transparent border-b border-zinc-900 border-opacity-50 py-32 md:py-48 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-24 text-center flex flex-col items-center">
-          <motion.h2 
+          <m.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-[12vw] md:text-[8vw] font-bold uppercase tracking-tighter text-white leading-none mb-6"
           >
             Built to scale
-          </motion.h2>
+          </m.h2>
           <p className="text-zinc-400 font-medium text-lg md:text-xl max-w-2xl">
             Transparent pricing matching the exact scope of your digital ambition. No hidden fees.
           </p>
@@ -44,7 +44,7 @@ export default function Pricing() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {tiers.map((tier, idx) => (
-            <motion.div 
+            <m.div 
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ export default function Pricing() {
               <button className={`w-full py-4 rounded-xl text-sm font-bold uppercase tracking-widest transition-colors ${tier.popular ? 'bg-white text-black hover:bg-zinc-200' : 'bg-zinc-900 border border-zinc-800 text-white hover:bg-zinc-800'}`}>
                 Select Tier
               </button>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

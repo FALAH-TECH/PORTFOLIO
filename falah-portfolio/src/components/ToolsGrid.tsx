@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { m, Variants } from "framer-motion";
 import { siteData } from "@/lib/data";
 import * as Icons from "lucide-react";
 
@@ -23,7 +23,7 @@ export default function ToolsGrid() {
   return (
     <section className="py-24 relative z-10">
       <div className="container max-w-7xl mx-auto px-6 md:px-12">
-        <motion.div 
+        <m.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -34,9 +34,9 @@ export default function ToolsGrid() {
           <p className="text-zinc-400 max-w-md mx-auto">
             The software and platforms I use daily to design, develop, and deploy scalable applications.
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.div 
+        <m.div 
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -48,7 +48,7 @@ export default function ToolsGrid() {
             const IconComponent = Icons[tool.icon] || Icons.Wrench;
             
             return (
-              <motion.div
+              <m.div
                 key={tool.name}
                 variants={item}
                 whileHover={{ y: -5, backgroundColor: "rgba(255, 255, 255, 0.08)" }}
@@ -59,10 +59,10 @@ export default function ToolsGrid() {
                   <IconComponent className="w-6 h-6" strokeWidth={1.5} />
                 </div>
                 <span className="text-sm font-medium text-zinc-300">{tool.name}</span>
-              </motion.div>
+              </m.div>
             );
           })}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

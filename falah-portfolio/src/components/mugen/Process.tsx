@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export default function Process() {
   const steps = [
@@ -28,7 +28,7 @@ export default function Process() {
         
         {/* Left Side: Headline */}
         <div className="lg:col-span-5 pr-0 lg:pr-12">
-          <motion.h2 
+          <m.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -37,13 +37,13 @@ export default function Process() {
           >
             A proven process that delivers results, <br />
             <span className="text-zinc-600">not surprises.</span>
-          </motion.h2>
+          </m.h2>
         </div>
 
         {/* Right Side: Numbered Blocks */}
         <div className="lg:col-span-7 flex flex-col gap-8 md:gap-12 pl-0 md:pl-12 lg:pl-16 border-l-0 lg:border-l border-zinc-900">
           {steps.map((step, idx) => (
-            <motion.div 
+            <m.div 
               key={idx}
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -62,7 +62,7 @@ export default function Process() {
               <p className="text-zinc-400 font-medium text-lg leading-relaxed max-w-lg pl-16">
                 {step.description}
               </p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 

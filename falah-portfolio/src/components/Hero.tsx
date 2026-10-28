@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { siteData } from "@/lib/data";
 
 export default function Hero() {
@@ -17,7 +17,7 @@ export default function Hero() {
     <section className="relative w-full overflow-hidden flex flex-col">
       {/* Huge Marquee Text */}
       <div className="w-full overflow-hidden whitespace-nowrap py-4 lg:py-8 border-b border-white/20">
-        <motion.div
+        <m.div
           initial={{ x: "0%" }}
           animate={{ x: "-50%" }}
           transition={{
@@ -33,7 +33,7 @@ export default function Hero() {
           <h1 className="text-[12vw] font-bold tracking-tighter uppercase leading-[0.8] pr-8 inline-block select-none">
             {developer.name} / {developer.name} /
           </h1>
-        </motion.div>
+        </m.div>
       </div>
 
       {/* Hero Bottom Split */}
@@ -76,7 +76,7 @@ export default function Hero() {
 
         {/* Right Image Panel */}
         <div className="w-full md:w-1/2 relative bg-zinc-900 min-h-[50vh] md:min-h-full p-6 lg:p-12 flex items-center justify-center overflow-hidden group">
-          <motion.img 
+          <m.img 
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.2, ease: "easeOut" }}

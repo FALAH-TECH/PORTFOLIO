@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 export default function Faq() {
@@ -35,20 +35,20 @@ export default function Faq() {
         
         {/* Left Side: Headline */}
         <div className="lg:col-span-4 pr-0 lg:pr-12">
-          <motion.h2 
+          <m.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-[12vw] md:text-[8vw] lg:text-[6vw] font-bold text-white tracking-tighter uppercase sticky top-32 leading-none"
           >
             FAQ
-          </motion.h2>
+          </m.h2>
         </div>
 
         {/* Right Side: Accordion */}
         <div className="lg:col-span-8 flex flex-col pt-4">
           {faqs.map((faq, idx) => (
-            <motion.div 
+            <m.div 
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +70,7 @@ export default function Faq() {
               
               <AnimatePresence>
                 {openIdx === idx && (
-                  <motion.div 
+                  <m.div 
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
@@ -80,10 +80,10 @@ export default function Faq() {
                     <p className="pb-10 pt-2 text-lg md:text-xl text-zinc-400 font-medium leading-relaxed max-w-3xl">
                       {faq.a}
                     </p>
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 

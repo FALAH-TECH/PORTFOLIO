@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { m, Variants } from "framer-motion";
 import { siteData } from "@/lib/data";
 
 export default function SkillsGrid() {
@@ -24,7 +24,7 @@ export default function SkillsGrid() {
       <div className="container max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-24 items-start">
           
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -34,9 +34,9 @@ export default function SkillsGrid() {
             <p className="text-zinc-400 max-w-sm">
               Technologies and languages I use to bring digital products to life.
             </p>
-          </motion.div>
+          </m.div>
 
-          <motion.div 
+          <m.div 
             variants={container}
             initial="hidden"
             whileInView="show"
@@ -44,7 +44,7 @@ export default function SkillsGrid() {
             className="flex flex-wrap gap-4"
           >
             {siteData.skills.map((skill) => (
-              <motion.div
+              <m.div
                 key={skill}
                 variants={item}
                 whileHover={{ y: -5, scale: 1.05 }}
@@ -52,9 +52,9 @@ export default function SkillsGrid() {
                 data-interactive="true"
               >
                 <span className="text-sm font-medium text-zinc-200">{skill}</span>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
           
         </div>
       </div>

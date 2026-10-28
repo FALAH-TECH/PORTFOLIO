@@ -1,16 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 
 export default function About() {
   return (
-    <section id="about" className="w-full bg-transparent py-32 md:py-48 px-6 sm:px-12 border-b border-white/5">
+    <section className="w-full bg-transparent py-32 md:py-48 px-6 sm:px-12 border-b border-white/5">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -19,13 +19,13 @@ export default function About() {
         >
           <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-500 mb-4 block">Who I Am</span>
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.9]">About<br /><span className="text-zinc-600">Me.</span></h2>
-        </motion.div>
+        </m.div>
 
         {/* Two Column */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
           {/* Left: Image */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -46,10 +46,10 @@ export default function About() {
               <div className="absolute top-6 left-6 w-10 h-10 border-l-2 border-t-2 border-white/20" />
               <div className="absolute bottom-6 right-6 w-10 h-10 border-r-2 border-b-2 border-white/20" />
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Right: Bio */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -71,7 +71,7 @@ export default function About() {
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 mt-4">
               <a
-                href="/resume.pdf"
+                href="/RESUME%202026%20JUNE.pdf"
                 download
                 className="flex items-center gap-3 px-7 py-4 rounded-2xl bg-white text-black font-bold text-sm tracking-tight hover:bg-zinc-100 transition-all"
               >
@@ -87,7 +87,7 @@ export default function About() {
                 Get in Touch
               </a>
             </div>
-          </motion.div>
+          </m.div>
         </div>
 
 

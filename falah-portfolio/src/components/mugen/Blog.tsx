@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import StepCarousel from "./StepCarousel";
 
 export default function Blog() {
@@ -32,7 +32,7 @@ export default function Blog() {
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <motion.div
+        <m.div
            initial={{ opacity: 0, y: 20 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
@@ -46,7 +46,7 @@ export default function Blog() {
             </h2>
             <p className="text-zinc-400 mt-6 text-xs md:text-sm font-bold uppercase tracking-[0.2em]">A simple process to bring your idea to life.</p>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Steps Carousel */}
         <div className="mt-8 md:mt-12">

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export default function MugenIntro() {
   return (
@@ -15,7 +15,7 @@ export default function MugenIntro() {
           </div>
           <div className="lg:col-span-9 lg:col-start-3 pr-0 md:pr-12">
             <h2 className="text-[7vw] md:text-[5vw] lg:text-[4.8vw] font-bold leading-[1.05] tracking-tighter">
-              <motion.span 
+              <m.span 
                 initial={{ opacity: 0.2 }}
                 whileInView={{ opacity: 0.2 }}
                 transition={{ duration: 0.8 }}
@@ -25,7 +25,7 @@ export default function MugenIntro() {
                   "I build MVPs and web products for early-stage startups —",
                   "fast, clean, and ready to launch in 1–2 weeks.",
                 ].map((line, i) => (
-                  <motion.span
+                  <m.span
                     key={i}
                     initial={{ opacity: 0.1, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -34,9 +34,9 @@ export default function MugenIntro() {
                     className="block"
                   >
                     {line}
-                  </motion.span>
+                  </m.span>
                 ))}
-              </motion.span>
+              </m.span>
             </h2>
           </div>
         </div>

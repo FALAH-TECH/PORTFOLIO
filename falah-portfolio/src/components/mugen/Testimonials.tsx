@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 const testimonials = [
@@ -50,7 +50,7 @@ export default function Testimonials() {
         {/* Testimonial Card */}
         <div className="relative min-h-[320px] flex flex-col justify-between">
           <AnimatePresence mode="wait">
-            <motion.div
+            <m.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -73,7 +73,7 @@ export default function Testimonials() {
                     <p className="text-zinc-500 text-[10px] uppercase tracking-widest font-bold mt-0.5">{current.role}</p>
                   </cite>
               </div>
-            </motion.div>
+            </m.div>
           </AnimatePresence>
 
           {/* Navigation */}

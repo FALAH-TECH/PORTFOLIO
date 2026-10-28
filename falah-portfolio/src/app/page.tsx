@@ -9,6 +9,7 @@ import GlobalBackground from "@/components/mugen/GlobalBackground";
 import MugenHero from "@/components/mugen/Hero";
 import PageLoader from "@/components/mugen/PageLoader";
 import CustomCursor from "@/components/mugen/CustomCursor";
+import SectionWrapper from "@/components/mugen/SectionWrapper";
 
 // ─── Below-fold components — dynamically loaded ───────────────────────────────
 const MugenIntro    = dynamic(() => import("@/components/mugen/Intro"),       { ssr: false });
@@ -21,19 +22,6 @@ const CaseStudies   = dynamic(() => import("@/components/mugen/CaseStudies"), { 
 const Testimonials  = dynamic(() => import("@/components/mugen/Testimonials"),{ ssr: false });
 const Blog          = dynamic(() => import("@/components/mugen/Blog"),        { ssr: false });
 const Footer        = dynamic(() => import("@/components/mugen/Footer"),      { ssr: false });
-
-// Scroll-triggered fade-in wrapper — uses LazyMotion m.div, only activates on scroll
-const FadeInScroll = ({ children }: { children: React.ReactNode }) => (
-  <m.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-80px" }}
-    transition={{ duration: 0.7, ease: "easeOut" }}
-  >
-    {children}
-  </m.div>
-);
-
 export default function Home() {
   return (
     <LazyMotion features={domAnimation} strict>
@@ -41,73 +29,66 @@ export default function Home() {
       <PageLoader />
       <CustomCursor />
 
-      <main className="min-h-screen w-full bg-transparent text-white selection:bg-white selection:text-black font-sans overflow-x-hidden relative">
+      <main className="min-h-screen w-full bg-transparent text-white selection:bg-white selection:text-black font-sans relative">
         <GlobalBackground />
 
         {/* Header */}
         <Header />
 
-        {/* 1. Hero — above fold, no lazy wrapper */}
-        <section id="home">
+        {/* 0. Hero — above fold, no lazy wrapper */}
+        <SectionWrapper index={0} id="home">
           <MugenHero />
-        </section>
+        </SectionWrapper>
 
-        {/* 2. Intro */}
-        <section id="studio" aria-label="Introduction">
-          <FadeInScroll>
-            <MugenIntro />
-          </FadeInScroll>
-        </section>
+        {/* 1. Intro */}
+        <SectionWrapper index={1} id="studio" aria-label="Introduction">
+          <MugenIntro />
+        </SectionWrapper>
 
-        {/* 3. About */}
-        <section id="about">
-          <FadeInScroll>
-            <About />
-          </FadeInScroll>
-        </section>
+        {/* 2. About */}
+        <SectionWrapper index={2} id="about">
+          <About />
+        </SectionWrapper>
 
-        {/* 4. Stats */}
-        <FadeInScroll>
+        {/* 3. Stats */}
+        <SectionWrapper index={3}>
           <Stats />
-        </FadeInScroll>
+        </SectionWrapper>
 
-        {/* 5. Services */}
-        <section id="services">
+        {/* 4. Services */}
+        <SectionWrapper index={4} id="services">
           <Services />
-        </section>
+        </SectionWrapper>
 
-        {/* 6. Tech Stack */}
-        <FadeInScroll>
+        {/* 5. Tech Stack */}
+        <SectionWrapper index={5}>
           <TechStack />
-        </FadeInScroll>
+        </SectionWrapper>
 
-        <FadeInScroll>
+        {/* 6. Impact */}
+        <SectionWrapper index={6}>
           <Impact />
-        </FadeInScroll>
+        </SectionWrapper>
 
         {/* 7. Case Studies */}
-        <section id="work">
-          <FadeInScroll>
-            <CaseStudies />
-          </FadeInScroll>
-        </section>
+        <SectionWrapper index={7} id="work">
+          <CaseStudies />
+        </SectionWrapper>
 
         {/* 8. Testimonials */}
-        <FadeInScroll>
+        <SectionWrapper index={8}>
           <Testimonials />
-        </FadeInScroll>
+        </SectionWrapper>
 
         {/* 9. Blog */}
-        <section id="writing">
-          <FadeInScroll>
-            <Blog />
-          </FadeInScroll>
-        </section>
+        <SectionWrapper index={9} id="writing">
+          <Blog />
+        </SectionWrapper>
 
         {/* 10. Footer / Contact */}
-        <section id="contact">
+        <SectionWrapper index={10} id="contact">
           <Footer />
-        </section>
+        </SectionWrapper>
       </main>
     </LazyMotion>
   );

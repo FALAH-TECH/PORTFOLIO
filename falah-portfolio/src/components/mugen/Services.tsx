@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 const services = [
@@ -31,7 +31,7 @@ export default function Services() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
-    <section className="w-full bg-black relative overflow-hidden py-32 px-6 sm:px-12 min-h-[800px] flex flex-col justify-center">
+    <section className="w-full bg-transparent relative overflow-hidden py-32 px-6 sm:px-12 min-h-[800px] flex flex-col justify-center">
 
       {/* SVG Filter for Liquid Effect */}
       <svg className="hidden">
@@ -43,7 +43,7 @@ export default function Services() {
 
       {/* Ethereal/Liquid Smoke Effect */}
       <div className="absolute inset-0 z-0 opacity-30" style={{ filter: 'url(#liquid-services)' }}>
-        <motion.div
+        <m.div
           animate={{
             scale: [1, 1.3, 1],
             opacity: [0.1, 0.2, 0.1],
@@ -53,7 +53,7 @@ export default function Services() {
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-1/2 left-1/4 w-[800px] h-[800px] bg-white blur-[180px] rounded-full"
         />
-        <motion.div
+        <m.div
           animate={{
             scale: [1.2, 1, 1.2],
             opacity: [0.15, 0.05, 0.15],
@@ -66,7 +66,7 @@ export default function Services() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -77,7 +77,7 @@ export default function Services() {
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.9]">
             My Services
           </h2>
-        </motion.div>
+        </m.div>
 
         {/* FlowStack Layout */}
         <div className="flex flex-col lg:flex-row gap-4 lg:h-[600px] min-h-[600px] lg:min-h-0 w-full">
@@ -86,7 +86,7 @@ export default function Services() {
             const isNothingHovered = hoveredIdx === null;
 
             return (
-              <motion.div
+              <m.div
                 key={service.title}
                 layout
                 onMouseEnter={() => setHoveredIdx(index)}
@@ -107,32 +107,32 @@ export default function Services() {
                 {/* Content Overlay */}
                 <div className="relative z-20 h-full p-8 md:p-12 flex flex-col justify-between">
                   <div>
-                    <motion.span
+                    <m.span
                       layout
                       className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-500 mb-8 block"
                     >
                       0{index + 1}
-                    </motion.span>
+                    </m.span>
 
-                    <motion.h3
+                    <m.h3
                       layout
                       className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white mb-4 leading-[0.95]"
                     >
                       {service.title.split(' ').map((word, i) => (
                         <span key={i} className="block">{word}</span>
                       ))}
-                    </motion.h3>
+                    </m.h3>
 
-                    <motion.span
+                    <m.span
                       layout
                       className="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-300 mb-8 block opacity-80"
                     >
                       Starting from {service.price}
-                    </motion.span>
+                    </m.span>
 
                     <AnimatePresence>
                       {isHovered && (
-                        <motion.div
+                        <m.div
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -20 }}
@@ -149,12 +149,12 @@ export default function Services() {
                               </span>
                             ))}
                           </div>
-                        </motion.div>
+                        </m.div>
                       )}
                     </AnimatePresence>
                   </div>
 
-                  <motion.div layout className="flex justify-between items-end">
+                  <m.div layout className="flex justify-between items-end">
                     <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all duration-500">
                       <svg
                         width="16"
@@ -166,17 +166,17 @@ export default function Services() {
                         <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </div>
-                  </motion.div>
+                  </m.div>
                 </div>
 
                 {/* Subtle Background Glow for active card */}
                 {isHovered && (
-                  <motion.div
+                  <m.div
                     layoutId="glow"
                     className="absolute inset-0 z-10 bg-gradient-to-br from-white/[0.05] to-transparent pointer-events-none"
                   />
                 )}
-              </motion.div>
+              </m.div>
             );
           })}
         </div>

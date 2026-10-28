@@ -1,6 +1,6 @@
 "use client";
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { projects } from "@/lib/projects";
 
@@ -31,7 +31,7 @@ const ProjectCard = ({ project, idx }: { project: typeof projects[0], idx: numbe
             className="w-full h-full"
           />
         ) : (
-          <motion.img
+          <m.img
             style={{ y, scale: 1.2 }}
             src={project.image}
             alt={`Preview of ${project.title} — ${project.shortDescription}`}
@@ -126,14 +126,14 @@ export default function CaseStudies() {
         <div className="flex justify-between items-end mb-24 md:mb-32">
           <div className="flex flex-col gap-4">
             <span className="text-[10px] font-bold text-zinc-600 uppercase tracking-[0.3em]">Selected Work</span>
-            <motion.h2
+            <m.h2
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="text-5xl md:text-8xl font-bold uppercase tracking-tighter text-white leading-none"
             >
               PROJECTS
-            </motion.h2>
+            </m.h2>
           </div>
         </div>
 

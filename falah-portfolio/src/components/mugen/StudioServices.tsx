@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
+import { m, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 
 const services = [
   {
@@ -66,7 +66,7 @@ const ServiceItem = ({ service, index, setActiveIndex }: any) => {
 
   return (
     <div ref={ref} className="min-h-screen flex flex-col justify-center w-full py-20 relative perspective-[1000px]">
-      <motion.div 
+      <m.div 
         onViewportEnter={() => setActiveIndex(index)}
         viewport={{ amount: 0.5 }}
         onMouseMove={handleMouseMove}
@@ -83,7 +83,7 @@ const ServiceItem = ({ service, index, setActiveIndex }: any) => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-12 max-w-3xl">
           {service.skills.map((skill: string, i: number) => (
-            <motion.div 
+            <m.div 
               key={i} 
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -92,20 +92,20 @@ const ServiceItem = ({ service, index, setActiveIndex }: any) => {
             >
               <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/50 shadow-[0_0_8px_rgba(16,185,129,0.3)]"></div>
               {skill}
-            </motion.div>
+            </m.div>
           ))}
         </div>
         
         <div className="mt-8 flex items-center">
-           <motion.button 
+           <m.button 
              whileHover={{ scale: 1.05 }}
              whileTap={{ scale: 0.95 }}
              className="px-8 py-4 rounded-full bg-white text-black font-bold text-xs tracking-widest uppercase flex items-center gap-3 transition-colors hover:bg-zinc-200"
             >
               Start Project —
-           </motion.button>
+           </m.button>
         </div>
-      </motion.div>
+      </m.div>
     </div>
   );
 };
@@ -144,7 +144,7 @@ export default function StudioServices() {
 
             {/* Ethereal/Liquid Smoke Effect */}
             <div className="absolute inset-0 z-0 opacity-40" style={{ filter: 'url(#liquid)' }}>
-               <motion.div 
+               <m.div 
                  animate={{
                    scale: [1, 1.4, 1],
                    opacity: [0.1, 0.2, 0.1],
@@ -154,7 +154,7 @@ export default function StudioServices() {
                  transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
                  className="absolute top-1/4 left-1/4 w-[800px] h-[800px] bg-white blur-[180px] rounded-full"
                />
-               <motion.div 
+               <m.div 
                  animate={{
                    scale: [1.3, 1, 1.3],
                    opacity: [0.15, 0.05, 0.15],
@@ -167,7 +167,7 @@ export default function StudioServices() {
             </div>
 
             <AnimatePresence mode="wait">
-              <motion.div
+              <m.div
                 key={activeIndex}
                 initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
@@ -176,7 +176,7 @@ export default function StudioServices() {
                 className="relative z-10 w-full h-full flex items-center justify-center p-12"
               >
                 {/* Visual space is now purely atmospheric smoke */}
-              </motion.div>
+              </m.div>
             </AnimatePresence>
           </div>
         </div>

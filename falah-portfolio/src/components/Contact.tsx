@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { siteData } from "@/lib/data";
 
 export default function Contact() {
@@ -12,7 +12,7 @@ export default function Contact() {
         
         {/* Left Image */}
         <div className="w-full md:w-1/2 p-6 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r border-white/20 flex items-center justify-center">
-          <motion.img 
+          <m.img 
             initial={{ scale: 0.95, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
@@ -47,7 +47,7 @@ export default function Contact() {
 
       {/* Marquee Divider */}
       <div className="w-full bg-white text-black overflow-hidden whitespace-nowrap py-3 font-bold uppercase tracking-widest text-xs flex">
-        <motion.div
+        <m.div
            initial={{ x: "0%" }}
            animate={{ x: "-50%" }}
            transition={{
@@ -66,12 +66,12 @@ export default function Contact() {
           <span className="px-8">Available For Freelance</span>
           <span className="px-8 flex-inline items-center gap-2">Remote <span className="w-2 h-2 inline-block rounded-full bg-black shrink-0"></span></span>
           <span className="px-8 hidden md:inline-block">Full-Stack Development</span>
-        </motion.div>
+        </m.div>
       </div>
 
       {/* Massive Contact Text Bottom */}
       <div className="w-full px-4 md:px-12 py-12 md:py-24 flex items-center justify-center overflow-hidden">
-        <motion.h2 
+        <m.h2 
           initial={{ y: "100%" }}
           whileInView={{ y: 0 }}
           viewport={{ once: true }}
@@ -79,7 +79,7 @@ export default function Contact() {
           className="text-[14vw] font-bold tracking-tighter uppercase leading-[0.8] text-center"
         >
           Contact Now
-        </motion.h2>
+        </m.h2>
       </div>
       
     </section>

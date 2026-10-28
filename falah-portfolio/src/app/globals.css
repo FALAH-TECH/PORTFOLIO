@@ -96,6 +96,13 @@
   background: #52525b;
 }
 
+/* Hide custom cursor on touch/coarse-pointer devices */
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
 /* Marquee animations — pure CSS, zero JS */
 @keyframes marquee {
   0%   { transform: translateX(0); }
